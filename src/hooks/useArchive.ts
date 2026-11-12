@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import type { ArchiveEntry, Reality } from '../types';
-import { loadArchive, saveArchive, isFirstLaunch, markInitialized } from '../utils/storage';
-import { seedRealities } from '../data/seedData';
+import { loadArchive, saveArchive, markInitialized } from '../utils/storage';
 import { generateId } from '../engine/textUtils';
 
 function createArchiveEntry(reality: Reality, name?: string): ArchiveEntry {
@@ -14,18 +13,16 @@ function createArchiveEntry(reality: Reality, name?: string): ArchiveEntry {
 }
 
 export function useArchive() {
-  const [entries, setEntries] = useState<ArchiveEntry[]>([]);
+  const [entries, setEntries] = useState<ArchiveEntry[]>(() => {
+    return loadArchive().filter((e) => !e.reality?.id?.startsWith('seed-'));
+  });
 
-  // Load archive on mount; seed on first launch
+  // Load archive on mount; starts empty for pure user customization
   useEffect(() => {
-    if (isFirstLaunch()) {
-      const seeded = seedRealities.map((reality: Reality) => createArchiveEntry(reality));
-      setEntries(seeded);
-      saveArchive(seeded);
-      markInitialized();
-    } else {
-      setEntries(loadArchive());
-    }
+    const loaded = loadArchive().filter((e) => !e.reality?.id?.startsWith('seed-'));
+    setEntries(loaded);
+    saveArchive(loaded);
+    markInitialized();
   }, []);
 
   const saveReality = useCallback(

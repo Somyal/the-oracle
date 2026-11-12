@@ -277,44 +277,31 @@ export function Navigation() {
           </AnimatePresence>
         </div>
 
-        {/* Desktop links & System Coherence Indicator */}
-        <div className="hidden md:flex items-center gap-6">
-          {/* System Coherence Status Pill */}
-          <div
-            className="hidden lg:flex items-center gap-2 px-2.5 py-1 rounded-full border border-oracle-border bg-oracle-surface/50 select-none"
-            title="Procedural Reality Engine: Running 100% locally in browser memory"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)] animate-pulse" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-oracle-text-muted">
-              ENGINE: AUTONOMOUS // LOCAL
-            </span>
-          </div>
-
-          <div className="flex items-center gap-7">
-            {links.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                onClick={() => resonance.playTick()}
-                className="relative font-sans text-xs tracking-wider uppercase transition-colors duration-300"
-              >
-                {({ isActive: active }) => (
-                  <>
-                    <span className={active ? 'text-oracle-amber font-medium' : 'text-oracle-text-dim hover:text-oracle-text'}>
-                      {link.label}
-                    </span>
-                    {active && (
-                      <motion.div
-                        layoutId="nav-underline"
-                        className="absolute -bottom-[19px] left-0 right-0 h-px bg-oracle-amber"
-                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                      />
-                    )}
-                  </>
-                )}
-              </NavLink>
-            ))}
-          </div>
+        {/* Desktop links */}
+        <div className="hidden md:flex items-center gap-8">
+          {links.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              onClick={() => resonance.playTick()}
+              className="relative font-sans text-xs tracking-wider uppercase transition-colors duration-300"
+            >
+              {({ isActive: active }) => (
+                <>
+                  <span className={active ? 'text-oracle-amber font-medium' : 'text-oracle-text-dim hover:text-oracle-text'}>
+                    {link.label}
+                  </span>
+                  {active && (
+                    <motion.div
+                      layoutId="nav-underline"
+                      className="absolute -bottom-[19px] left-0 right-0 h-px bg-oracle-amber"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                </>
+              )}
+            </NavLink>
+          ))}
         </div>
 
         {/* Mobile controls */}

@@ -98,17 +98,14 @@ export function LoadingSequence({ phase, question }: LoadingSequenceProps) {
 
       {/* Main Container */}
       <div className="relative z-10 flex flex-col items-center max-w-xl w-full text-center">
-        {/* Top Telemetry Header */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-oracle-amber/30 bg-oracle-amber/10 mb-8 font-mono text-[10px] tracking-[0.25em] text-oracle-amber">
+        {/* Top Header */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-oracle-amber/30 bg-oracle-amber/10 mb-8 font-sans text-xs tracking-widest uppercase text-oracle-amber">
           <Disc size={13} className="animate-spin text-oracle-amber" />
-          <span>PROCEDURAL REALITY ENGINE // LIVE SYNTHESIS</span>
+          <span>Synthesizing Reality</span>
         </div>
 
-        {/* Question Specimen */}
-        <div className="p-4 rounded-lg border border-oracle-border bg-oracle-surface/70 w-full mb-8">
-          <span className="font-mono text-[9px] uppercase tracking-widest text-oracle-text-muted block mb-1">
-            HYPOTHESIS VECTOR INGESTED
-          </span>
+        {/* Question */}
+        <div className="p-4 rounded-xl border border-oracle-border bg-oracle-surface/70 w-full mb-8">
           <p className="font-serif text-lg md:text-xl text-oracle-text italic leading-snug">
             &ldquo;{question}&rdquo;
           </p>
@@ -123,15 +120,12 @@ export function LoadingSequence({ phase, question }: LoadingSequenceProps) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.3 }}
-              className="space-y-1"
+              className="space-y-1.5"
             >
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-oracle-blue block">
-                {currentData.code}
-              </span>
               <h3 className="font-serif text-xl md:text-2xl text-oracle-text tracking-wide">
                 {currentData.label}
               </h3>
-              <p className="font-serif italic text-xs text-oracle-text-dim">
+              <p className="font-serif italic text-sm text-oracle-text-dim">
                 {currentData.telemetry}
               </p>
             </motion.div>

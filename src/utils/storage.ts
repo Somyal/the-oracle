@@ -11,7 +11,8 @@ export function loadArchive(): ArchiveEntry[] {
     const raw = localStorage.getItem(STORAGE_KEYS.archive);
     if (!raw) return [];
     const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter((e: ArchiveEntry) => !e.reality?.id?.startsWith('seed-'));
   } catch {
     return [];
   }

@@ -74,17 +74,6 @@ export function Observatory() {
       />
       <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[980px] h-[980px] rounded-full border border-oracle-blue/5 opacity-30" />
 
-      {/* Telemetry Corner Accents */}
-      <div className="pointer-events-none absolute top-18 left-8 hidden lg:flex flex-col gap-0.5 font-mono text-[9px] text-oracle-text-muted/60 tracking-widest uppercase">
-        <span>OBSERVATORY STRAND-0</span>
-        <span>RA 19h 50m 47s // DEC +08° 52′ 06″</span>
-      </div>
-
-      <div className="pointer-events-none absolute top-18 right-8 hidden lg:flex flex-col items-end gap-0.5 font-mono text-[9px] text-oracle-text-muted/60 tracking-widest uppercase">
-        <span>GRID COHERENCE: OPTIMAL</span>
-        <span>CHRONO-DRIFT: 0.0004 μHz</span>
-      </div>
-
       {/* Radial glow */}
       <div
         className="pointer-events-none absolute left-1/2 top-0 h-[600px] w-[900px] -translate-x-1/2 -translate-y-1/4 rounded-full"

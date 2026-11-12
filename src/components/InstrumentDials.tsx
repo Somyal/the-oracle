@@ -48,17 +48,17 @@ export function InstrumentDials({ parameters, onChange }: InstrumentDialsProps) 
           resonance.playTick();
           setIsOpen((prev) => !prev);
         }}
-        className="flex items-center justify-between px-4 py-2.5 rounded-md border border-oracle-border bg-[#0E1015]/90 hover:border-oracle-amber/40 transition-all cursor-pointer select-none relative group"
+        className="flex items-center justify-between px-4 py-2.5 rounded-lg border border-oracle-border bg-oracle-surface/60 hover:border-oracle-amber/40 transition-all cursor-pointer select-none relative group"
       >
         <div className="flex items-center gap-2.5">
           <Sliders size={13} className="text-oracle-amber" />
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-oracle-text">
-            INSTRUMENT CALIBRATION // VERNIER ARRAY
+          <span className="font-sans text-xs uppercase tracking-widest text-oracle-text">
+            Calibration Parameters
           </span>
           {isCustomized && (
-            <span className="inline-flex items-center gap-1 font-mono text-[9px] uppercase tracking-wider text-oracle-amber px-1.5 py-0.2 rounded bg-oracle-amber/15 border border-oracle-amber/30">
+            <span className="inline-flex items-center gap-1 font-sans text-[10px] uppercase tracking-wider text-oracle-amber px-1.5 py-0.5 rounded bg-oracle-amber/15 border border-oracle-amber/30">
               <span className="w-1.5 h-1.5 rounded-full bg-oracle-amber animate-pulse" />
-              OFFSET ACTIVE
+              Customized
             </span>
           )}
         </div>
@@ -67,11 +67,11 @@ export function InstrumentDials({ parameters, onChange }: InstrumentDialsProps) 
           {isCustomized && (
             <button
               onClick={handleReset}
-              className="font-mono text-[9px] uppercase tracking-wider text-oracle-text-muted hover:text-oracle-amber flex items-center gap-1 transition-colors cursor-pointer"
+              className="font-sans text-[10px] uppercase tracking-wider text-oracle-text-muted hover:text-oracle-amber flex items-center gap-1 transition-colors cursor-pointer"
               title="Reset calibration dials"
             >
               <RotateCcw size={10} />
-              Zero Out
+              Reset
             </button>
           )}
 

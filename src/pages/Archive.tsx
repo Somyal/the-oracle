@@ -219,7 +219,7 @@ export function Archive() {
             className="mt-6 space-y-4"
           >
             <AnimatePresence>
-              {filteredEntries.map((entry, index) => (
+              {filteredEntries.map((entry) => (
                 <motion.div
                   key={entry.id}
                   layout
@@ -227,25 +227,17 @@ export function Archive() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3 }}
-                  className="group relative rounded-lg border border-oracle-border bg-[#0E1015]/80 p-5 transition-all hover:border-oracle-amber/40 hover:bg-[#14171E] hover:shadow-xl"
+                  className="group relative rounded-xl border border-oracle-border bg-oracle-surface/70 p-5 transition-all hover:border-oracle-border-light hover:bg-oracle-surface hover:shadow-lg"
                 >
-                  {/* Specimen Reticle Crosshairs */}
-                  <span className="absolute top-1.5 left-2 font-mono text-[9px] text-oracle-text-muted/40 select-none">⌜</span>
-                  <span className="absolute top-1.5 right-2 font-mono text-[9px] text-oracle-text-muted/40 select-none">⌝</span>
-
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1 min-w-0">
-                      {/* Accession header */}
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <span className="font-mono text-[9px] uppercase tracking-widest text-oracle-amber/80">
-                          SPECIMEN #{String(filteredEntries.length - index).padStart(3, '0')}
-                        </span>
-                        {entry.reality.parentId && (
-                          <span className="font-mono text-[9px] uppercase tracking-wider text-oracle-blue px-1.5 py-0.2 rounded bg-oracle-blue/15 border border-oracle-blue/30">
-                            BRANCHED STRAND
+                      {entry.reality.parentId && (
+                        <div className="mb-1.5">
+                          <span className="font-sans text-[10px] uppercase tracking-wider text-oracle-blue px-2 py-0.5 rounded bg-oracle-blue/15 border border-oracle-blue/30">
+                            Branched Reality
                           </span>
-                        )}
-                      </div>
+                        </div>
+                      )}
 
                       {/* Name — view or inline edit */}
                       {editingId === entry.id ? (
@@ -288,14 +280,14 @@ export function Archive() {
                       </p>
 
                       {/* Metadata */}
-                      <div className="mt-3 flex flex-wrap items-center gap-3 font-mono text-[11px] text-oracle-text-muted">
+                      <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-oracle-text-muted">
                         <span>{formatDate(entry.savedAt)}</span>
                         <span>•</span>
-                        <span>{entry.reality.sections.length} AXIOMS</span>
+                        <span>{entry.reality.sections.length} axioms</span>
                         {entry.reality.timeline.length > 0 && (
                           <>
                             <span>•</span>
-                            <span>{entry.reality.timeline.length} TIMELINE NODES</span>
+                            <span>{entry.reality.timeline.length} timeline events</span>
                           </>
                         )}
                       </div>

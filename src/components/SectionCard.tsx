@@ -46,27 +46,19 @@ export function SectionCard({ section, onGoDeeper, onBranch, index }: SectionCar
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
-      className={`relative p-6 rounded-lg border ${
-        isAmber ? 'border-oracle-amber/25 bg-gradient-to-b from-[#0E1015] to-[#07080B]' : 'border-oracle-blue/25 bg-gradient-to-b from-[#0E1015] to-[#07080B]'
-      } shadow-lg overflow-hidden group`}
+      className={`relative p-6 md:p-7 rounded-xl border ${
+        isAmber ? 'border-oracle-amber/20 bg-oracle-surface/40' : 'border-oracle-blue/20 bg-oracle-surface/40'
+      } backdrop-blur-sm transition-all hover:border-oracle-border-light group`}
     >
-      {/* Reticle corner marks */}
-      <span className="absolute top-1.5 left-2 font-mono text-[9px] text-oracle-text-muted/40 select-none">⌜</span>
-      <span className="absolute top-1.5 right-2 font-mono text-[9px] text-oracle-text-muted/40 select-none">⌝</span>
-
-      {/* Section accession header */}
-      <div className="flex items-center justify-between mb-3 border-b border-oracle-border/50 pb-2">
-        <p className={`font-mono text-[10px] tracking-[0.25em] uppercase ${labelColor} flex items-center gap-2`}>
-          <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
-          AXIOM 0{index + 1} // {meta.label}
+      {/* Section label */}
+      <div className="flex items-center justify-between mb-3 border-b border-oracle-border/40 pb-2">
+        <p className={`font-sans text-[11px] tracking-[0.2em] uppercase ${labelColor} font-medium`}>
+          {meta.label}
         </p>
-        <span className="font-mono text-[9px] text-oracle-text-muted tracking-widest uppercase">
-          SEC-{section.type.slice(0, 4).toUpperCase()}
-        </span>
       </div>
 
       {/* Title */}
-      <h3 className="font-serif text-2xl text-oracle-text mb-3 leading-snug tracking-wide group-hover:text-white transition-colors">
+      <h3 className="font-serif text-2xl text-oracle-text mb-3 leading-snug group-hover:text-white transition-colors">
         {section.title}
       </h3>
 
@@ -76,13 +68,13 @@ export function SectionCard({ section, onGoDeeper, onBranch, index }: SectionCar
       </div>
 
       {/* Actions */}
-      <div className="flex items-center gap-6 mt-6 pt-3 border-t border-oracle-border/30">
+      <div className="flex items-center gap-6 mt-6 pt-4 border-t border-oracle-border/30">
         <button
           onClick={() => onGoDeeper(section.id)}
-          className="group/btn flex items-center gap-1.5 font-mono text-[10px] tracking-wider uppercase text-oracle-text-muted hover:text-oracle-amber transition-colors duration-300 cursor-pointer"
+          className="group/btn flex items-center gap-1.5 font-sans text-xs tracking-wider uppercase text-oracle-text-muted hover:text-oracle-amber transition-colors duration-300 cursor-pointer"
         >
-          <ChevronDown size={13} className="group-hover/btn:translate-y-0.5 transition-transform duration-300 text-oracle-amber/70" />
-          <span>[+] Expand Axiom</span>
+          <ChevronDown size={14} className="group-hover/btn:translate-y-0.5 transition-transform duration-300 text-oracle-amber/70" />
+          <span>Go Deeper</span>
         </button>
 
         <button
@@ -90,10 +82,10 @@ export function SectionCard({ section, onGoDeeper, onBranch, index }: SectionCar
             resonance.playTick();
             setBranchOpen((prev) => !prev);
           }}
-          className="group/btn flex items-center gap-1.5 font-mono text-[10px] tracking-wider uppercase text-oracle-text-muted hover:text-oracle-blue transition-colors duration-300 cursor-pointer"
+          className="group/btn flex items-center gap-1.5 font-sans text-xs tracking-wider uppercase text-oracle-text-muted hover:text-oracle-blue transition-colors duration-300 cursor-pointer"
         >
-          <GitBranch size={13} className="group-hover/btn:rotate-12 transition-transform duration-300 text-oracle-blue/70" />
-          <span>[⇄] Branch Timeline</span>
+          <GitBranch size={14} className="group-hover/btn:rotate-12 transition-transform duration-300 text-oracle-blue/70" />
+          <span>What if this changed?</span>
         </button>
       </div>
 

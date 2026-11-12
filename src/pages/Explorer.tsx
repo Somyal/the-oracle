@@ -181,16 +181,6 @@ export function Explorer() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="mt-8"
         >
-          {/* Telemetry Stamp */}
-          <div className="flex items-center gap-3 mb-3">
-            <span className="font-mono text-[9px] uppercase tracking-[0.25em] text-oracle-amber/90 px-2 py-0.5 rounded bg-oracle-amber/10 border border-oracle-amber/25">
-              STRAND COORD: {currentReality.id.slice(0, 8).toUpperCase()}
-            </span>
-            <span className="font-mono text-[9px] uppercase tracking-widest text-oracle-text-muted">
-              {currentReality.sections.length} AXIOMS // {currentReality.timeline.length} EPOCHS
-            </span>
-          </div>
-
           <h1 className="font-serif text-3xl leading-tight text-oracle-text md:text-5xl text-glow-amber">
             {currentReality.title}
           </h1>
@@ -198,14 +188,12 @@ export function Explorer() {
             {currentReality.description}
           </p>
 
-          {/* Original question specimen enclosure */}
-          <div className="relative mt-6 rounded-md border border-oracle-border bg-[#0E1015]/80 px-5 py-3.5 shadow-sm">
-            <span className="absolute top-1 left-2 font-mono text-[8px] text-oracle-text-muted/40 select-none">⌜</span>
-            <span className="absolute top-1 right-2 font-mono text-[8px] text-oracle-text-muted/40 select-none">⌝</span>
-            <span className="font-mono text-[9px] font-medium uppercase tracking-[0.2em] text-oracle-text-muted">
-              ORIGINAL HYPOTHESIS
+          {/* Original question */}
+          <div className="mt-6 rounded-xl border border-oracle-border bg-oracle-surface/50 px-5 py-4">
+            <span className="font-sans text-xs font-medium uppercase tracking-widest text-oracle-text-muted">
+              Original Question
             </span>
-            <p className="mt-1 font-serif text-lg italic text-oracle-text leading-snug">
+            <p className="mt-1.5 font-serif text-lg italic text-oracle-text leading-snug">
               &ldquo;{currentReality.question}&rdquo;
             </p>
           </div>
@@ -222,9 +210,9 @@ export function Explorer() {
           <button
             onClick={handleSave}
             disabled={isSaved}
-            className={`inline-flex items-center gap-2 rounded-md border px-4 py-2 font-mono text-[11px] uppercase tracking-wider transition-all cursor-pointer ${
+            className={`inline-flex items-center gap-2 rounded-lg border px-4 py-2 font-sans text-xs uppercase tracking-wider transition-all cursor-pointer ${
               isSaved
-                ? 'cursor-default border-oracle-amber/30 bg-oracle-amber/10 text-oracle-amber shadow-[0_0_10px_rgba(226,179,91,0.1)]'
+                ? 'cursor-default border-oracle-amber/30 bg-oracle-amber/10 text-oracle-amber'
                 : 'border-oracle-border bg-oracle-surface text-oracle-text-dim hover:border-oracle-amber/50 hover:text-oracle-amber hover:bg-oracle-amber/5'
             }`}
           >
@@ -233,7 +221,7 @@ export function Explorer() {
             ) : (
               <Bookmark className="h-4 w-4" />
             )}
-            {isSaved ? 'Archived' : 'Save to Archive'}
+            {isSaved ? 'Saved to Archive' : 'Save to Archive'}
           </button>
 
           {/* Compare with Prime Earth (Feature 5) */}
@@ -242,14 +230,14 @@ export function Explorer() {
               resonance.playTick();
               setShowComparison((prev) => !prev);
             }}
-            className={`inline-flex items-center gap-2 rounded-md border px-4 py-2 font-mono text-[11px] uppercase tracking-wider transition-all cursor-pointer ${
+            className={`inline-flex items-center gap-2 rounded-lg border px-4 py-2 font-sans text-xs uppercase tracking-wider transition-all cursor-pointer ${
               showComparison
-                ? 'border-oracle-blue bg-oracle-blue/15 text-oracle-blue shadow-[0_0_12px_rgba(84,180,216,0.15)]'
+                ? 'border-oracle-blue bg-oracle-blue/15 text-oracle-blue'
                 : 'border-oracle-border bg-oracle-surface text-oracle-text-dim hover:border-oracle-blue/50 hover:text-oracle-blue hover:bg-oracle-blue/5'
             }`}
           >
             <Scale className="h-4 w-4" />
-            {showComparison ? 'Hide Prime Lens' : 'Prime Chronograph'}
+            {showComparison ? 'Hide Prime Lens' : 'Compare with Prime Earth'}
           </button>
 
           {/* Transmission / Decryption Mode (Feature 6) */}
@@ -258,10 +246,10 @@ export function Explorer() {
               resonance.playEngage();
               setShowTransmission(true);
             }}
-            className="inline-flex items-center gap-2 rounded-md border border-oracle-border bg-oracle-surface px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-oracle-text-dim transition-all hover:border-oracle-amber/50 hover:text-oracle-amber hover:bg-oracle-amber/5 cursor-pointer"
+            className="inline-flex items-center gap-2 rounded-lg border border-oracle-border bg-oracle-surface px-4 py-2 font-sans text-xs uppercase tracking-wider text-oracle-text-dim transition-all hover:border-oracle-amber/50 hover:text-oracle-amber hover:bg-oracle-amber/5 cursor-pointer"
             title="Focus decryption reader (or press 'T')"
           >
-            <Radio className="h-4 w-4 text-oracle-amber animate-pulse" />
+            <Radio className="h-4 w-4 text-oracle-amber" />
             Transmission Mode [T]
           </button>
 
@@ -271,7 +259,7 @@ export function Explorer() {
               resonance.playTick();
               setShowDossier(true);
             }}
-            className="inline-flex items-center gap-2 rounded-md border border-oracle-border bg-oracle-surface px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-oracle-text-dim transition-all hover:border-oracle-border-light hover:text-oracle-text cursor-pointer"
+            className="inline-flex items-center gap-2 rounded-lg border border-oracle-border bg-oracle-surface px-4 py-2 font-sans text-xs uppercase tracking-wider text-oracle-text-dim transition-all hover:border-oracle-border-light hover:text-oracle-text cursor-pointer"
           >
             <FileText className="h-4 w-4" />
             Export Dossier
@@ -280,10 +268,10 @@ export function Explorer() {
           {/* Generate Another Universe */}
           <button
             onClick={handleGenerateAnother}
-            className="inline-flex items-center gap-2 rounded-md border border-oracle-border bg-oracle-surface px-4 py-2 font-mono text-[11px] uppercase tracking-wider text-oracle-text-dim transition-all hover:border-oracle-amber/50 hover:text-oracle-amber cursor-pointer"
+            className="inline-flex items-center gap-2 rounded-lg border border-oracle-border bg-oracle-surface px-4 py-2 font-sans text-xs uppercase tracking-wider text-oracle-text-dim transition-all hover:border-oracle-blue/50 hover:text-oracle-blue cursor-pointer"
           >
             <Sparkles className="h-4 w-4" />
-            New Query
+            Generate Another
           </button>
 
           {/* Return to original if branched */}
